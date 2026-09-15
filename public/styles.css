@@ -272,6 +272,9 @@ h1 {
   gap: 0.85rem;
 }
 
+.topbar-actions { display: flex; gap: 0.6rem; align-items: center; }
+.topbar-actions .secondary { padding: 0.5rem 0.8rem; border-radius: 12px; }
+
 .check-row {
   display: flex;
   flex-direction: row !important;

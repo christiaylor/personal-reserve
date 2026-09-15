@@ -11,7 +11,6 @@ const modeBadge = document.getElementById('modeBadge');
 const userGreeting = document.getElementById('userGreeting');
 const monthlyIncomeInput = document.getElementById('monthlyIncomeInput');
 const monthlyIncomeDisplay = document.getElementById('monthlyIncomeDisplay');
-const onboardingForm = document.getElementById('onboardingForm');
 
 function formatMoney(value) {
   return new Intl.NumberFormat('en-US', {
@@ -155,14 +154,6 @@ function renderWallet(bucketAccounts = []) {
     .join('');
 }
 
-function renderOnboarding(onboarding = {}) {
-  document.getElementById('onboardingName').value = onboarding.name || '';
-  document.getElementById('onboardingEmail').value = onboarding.email || '';
-  document.getElementById('onboardingIncome').value = onboarding.income || 0;
-  document.getElementById('onboardingRisk').value = onboarding.riskProfile || 'moderate';
-  document.getElementById('onboardingKyc').checked = Boolean(onboarding.kycVerified);
-}
-
 function showDashboard(user, rules = defaultRules()) {
   authScreen.classList.add('hidden');
   dashboardScreen.classList.remove('hidden');
@@ -206,7 +197,6 @@ async function loadDashboard() {
   }
 
   showDashboard(dashboardData.user, dashboardData.rules || defaultRules());
-  renderOnboarding(dashboardData.onboarding || {});
   renderWallet(dashboardData.bucketAccounts || []);
   renderSummary(dashboardData.summary);
   renderPayouts(dashboardData.payouts || []);
@@ -317,7 +307,6 @@ async function login(event) {
   }
 
   showDashboard(data.user, data.rules || defaultRules());
-  renderOnboarding(data.onboarding || {});
   renderSummary({
     monthlyIncome: data.user.monthlyIncome || 0,
     rules: data.rules?.map((rule) => ({
@@ -351,7 +340,6 @@ async function register(event) {
   }
 
   showDashboard(data.user, data.rules || defaultRules());
-  renderOnboarding(data.onboarding || { name: data.user.name, email: data.user.email, income: 0, riskProfile: 'moderate', kycVerified: false });
   renderSummary({
     monthlyIncome: 0,
     rules: [],
@@ -401,11 +389,18 @@ document.getElementById('saveProfileBtn').addEventListener('click', saveProfile)
 document.getElementById('previewBtn').addEventListener('click', previewRules);
 document.getElementById('runPayoutBtn').addEventListener('click', runPayouts);
 document.getElementById('linkAccountBtn').addEventListener('click', linkAccount);
-document.getElementById('onboardingForm').addEventListener('submit', saveOnboarding);
 document.getElementById('addRuleBtn').addEventListener('click', () => {
   ruleList.appendChild(makeRuleItem({ category: `Bucket ${ruleList.children.length + 1}`, type: 'percent', percent: 10, enabled: true }));
 });
+
 document.getElementById('logoutBtn').addEventListener('click', logout);
+
+const onboardingBtnEl = document.getElementById('onboardingBtn');
+if (onboardingBtnEl) {
+  onboardingBtnEl.addEventListener('click', () => {
+    window.location.href = '/onboarding.html';
+  });
+}
 
 if (enterAppBtn) {
   enterAppBtn.addEventListener('click', hideSplash);

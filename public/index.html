@@ -69,7 +69,10 @@
           <p class="eyebrow">Personal Reserve</p>
           <h2 id="userGreeting">Good morning</h2>
         </div>
-        <button id="logoutBtn" class="ghost" type="button">Log out</button>
+        <div class="topbar-actions">
+          <button id="onboardingBtn" class="secondary" type="button">Onboarding</button>
+          <button id="logoutBtn" class="ghost" type="button">Log out</button>
+        </div>
       </header>
 
       <main class="mobile-app">
@@ -111,36 +114,6 @@
         </section>
 
         <section class="card">
-          <div class="section-header">
-            <h3>Onboarding</h3>
-          </div>
-          <form id="onboardingForm" class="onboarding-form">
-            <label>
-              Full name
-              <input id="onboardingName" name="name" type="text" placeholder="Your legal name" />
-            </label>
-            <label>
-              Email
-              <input id="onboardingEmail" name="email" type="email" placeholder="you@example.com" />
-            </label>
-            <label>
-              Monthly income
-              <input id="onboardingIncome" name="income" type="number" min="0" step="0.01" />
-            </label>
-            <label>
-              Risk profile
-              <select id="onboardingRisk">
-                <option value="conservative">Conservative</option>
-                <option value="moderate" selected>Moderate</option>
-                <option value="aggressive">Aggressive</option>
-              </select>
-            </label>
-            <label class="check-row">
-              <input id="onboardingKyc" type="checkbox" />
-              <span>KYC documents verified</span>
-            </label>
-            <button type="submit" class="primary full">Save onboarding</button>
-          </form>
         </section>
 
         <section class="card">
