@@ -1,0 +1,25 @@
+{
+  "name": "personal-reserve",
+  "version": "1.1.0",
+  "description": "Mobile-first personal reserve app for rule-based allotment with Column integration hooks",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "fintech",
+    "column",
+    "allocations",
+    "mobile-first"
+  ],
+  "author": "Copilot",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}

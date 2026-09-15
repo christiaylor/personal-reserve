@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Personal Reserve</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="splashScreen" class="splash-screen">
+      <div class="splash-card">
+        <div class="brand-mark">PR</div>
+        <p class="eyebrow">Consumer fintech</p>
+        <h1>Move money with intention.</h1>
+        <p class="subtitle">Personal Reserve automatically routes your paycheck into the buckets that matter most.</p>
+        <button id="enterAppBtn" class="primary full" type="button">Enter app</button>
+      </div>
+    </div>
+
+    <div id="authScreen" class="screen auth-screen">
+      <div class="auth-shell">
+        <div class="brand-block">
+          <p class="eyebrow">Consumer fintech</p>
+          <h1>Personal Reserve</h1>
+          <p class="subtitle">Rule-based money allotment built for the way people actually move.</p>
+        </div>
+
+        <div class="auth-card">
+          <div class="tab-toggle" role="tablist" aria-label="Authentication mode">
+            <button class="tab-button active" data-mode="login" type="button">Log in</button>
+            <button class="tab-button" data-mode="register" type="button">Register</button>
+          </div>
+
+          <form id="loginForm" class="auth-form">
+            <label>
+              Email
+              <input name="email" type="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" placeholder="••••••••" required />
+            </label>
+            <button type="submit" class="primary full">Continue</button>
+          </form>
+
+          <form id="registerForm" class="auth-form hidden">
+            <label>
+              Full name
+              <input name="name" placeholder="Taylor James" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" placeholder="Create a password" required />
+            </label>
+            <button type="submit" class="primary full">Create account</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="dashboardScreen" class="screen hidden">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Personal Reserve</p>
+          <h2 id="userGreeting">Good morning</h2>
+        </div>
+        <button id="logoutBtn" class="ghost" type="button">Log out</button>
+      </header>
+
+      <main class="mobile-app">
+        <section class="card summary-card">
+          <div class="card-row">
+            <div>
+              <p class="label">Monthly income</p>
+              <h3 id="monthlyIncomeDisplay">$0.00</h3>
+            </div>
+            <span id="modeBadge" class="badge">Mock</span>
+          </div>
+          <div class="field-wrap">
+            <label>
+              Update monthly income
+              <input id="monthlyIncomeInput" type="number" min="0" step="0.01" value="0" />
+            </label>
+          </div>
+          <div class="inline-actions">
+            <button id="saveProfileBtn" class="primary" type="button">Save profile</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h3>Wallet</h3>
+          </div>
+          <div id="walletCards" class="wallet-grid"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h3>Allocation buckets</h3>
+            <button id="addRuleBtn" class="secondary" type="button">Add</button>
+          </div>
+          <div id="ruleList" class="rule-list"></div>
+          <div class="inline-actions">
+            <button id="previewBtn" class="primary" type="button">Preview</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h3>Onboarding</h3>
+          </div>
+          <form id="onboardingForm" class="onboarding-form">
+            <label>
+              Full name
+              <input id="onboardingName" name="name" type="text" placeholder="Your legal name" />
+            </label>
+            <label>
+              Email
+              <input id="onboardingEmail" name="email" type="email" placeholder="you@example.com" />
+            </label>
+            <label>
+              Monthly income
+              <input id="onboardingIncome" name="income" type="number" min="0" step="0.01" />
+            </label>
+            <label>
+              Risk profile
+              <select id="onboardingRisk">
+                <option value="conservative">Conservative</option>
+                <option value="moderate" selected>Moderate</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </label>
+            <label class="check-row">
+              <input id="onboardingKyc" type="checkbox" />
+              <span>KYC documents verified</span>
+            </label>
+            <button type="submit" class="primary full">Save onboarding</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h3>Cash flow preview</h3>
+          </div>
+          <div id="summary" class="summary-box">
+            Save a profile and set rules to preview allotments.
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h3>Bank links</h3>
+          </div>
+          <div id="bucketAccountList" class="bucket-list"></div>
+          <div class="inline-actions">
+            <button id="linkAccountBtn" class="secondary" type="button">Link account</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <h3>Scheduled payouts</h3>
+            <button id="runPayoutBtn" class="primary" type="button">Run</button>
+          </div>
+          <div id="payoutList" class="payout-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
